@@ -1,8 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Container,Header,Left,Body,Right,Icon } from 'native-base';
-export default function Head({navigation}) {
+import { Container,Header,Left,Body,Right,Icon,Button } from 'native-base';
+
+
+export default function Head(props) {
     
     return (
 <Container style={styles.container}>
@@ -11,9 +13,13 @@ export default function Head({navigation}) {
       <Icon style={styles.iconleft} type="Ionicons" name="menu" />
       </Left>
       <Body><Text style={styles.title}>Ecomm</Text></Body>
-      <Right><Icon style={styles.icons} type="FontAwesome" name="shopping-cart" style={styles.iconright}/></Right>
+      <Right>
+      <Button transparent onPress={()=> props.navigation.navigate('Carrello',{categoria:props.categoria,image:props.image})}>
+        <Icon style={styles.icons} type="FontAwesome" name="shopping-cart" style={styles.iconright}/>
+        </Button>
+        </Right>
     </Header>
-    </Container>
+</Container>
  );
 }
 
@@ -38,7 +44,7 @@ const styles = StyleSheet.create({
     },
     title:{
       color:'white',
-      fontSize:20,
+      fontSize:18,
       marginLeft:90,
       
     }

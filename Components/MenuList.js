@@ -6,18 +6,20 @@ import { createStackNavigator } from '@react-navigation/stack';
 import FoodScreen from '../screen/FoodScreen.js';
 let height = Dimensions.get('window').height;
 
-export default function MenuList(props) {
-    
+export default function MenuList (props) {
     return (
-        
+    <TouchableOpacity onPress={()=> props.navigation.navigate('FoodScreen',{categoria:props.categoria,image:props.image})}>
         <View>
             <View style={styles.blockimg}>
+                
                 <Image style={styles.img} source={props.image} blurRadius={2}/>
+                
             </View>
             <View style={styles.blocktext}>
-                <Text style={styles.text}>{props.categoria}</Text>
+                <Text style={styles.text}> {props.categoria} </Text>
             </View>
         </View>
+    </TouchableOpacity>
     );
 }
 

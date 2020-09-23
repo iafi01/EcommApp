@@ -14,9 +14,7 @@ let Pizza = require(`../assets/pizza.jpg`);
 let Pane = require(`../assets/pane.jpg`);
 
 
-export default function FoodScreen({route,navigation}) {
-    let title=route.params.title;
-    let description=route.params.description;
+export default function FoodScreen(props) {
     return (
     <TouchableOpacity>
       <View style={styles.FoodItemView}>
@@ -29,7 +27,7 @@ export default function FoodScreen({route,navigation}) {
 
           <View style={styles.FoodImageView}>
 
-          <Image style={styles.img} source={Burger} />
+          <Image style={styles.img} source={props.image} />
 
           </View>
 
@@ -37,8 +35,8 @@ export default function FoodScreen({route,navigation}) {
 
               <View style={styles.FoodTextView}>
 
-                <Text style={styles.FoodTitle}>{title}</Text>
-                <Text style={styles.FoodDescription}>{description}</Text>
+                <Text style={styles.FoodTitle}>{props.title}</Text>
+                <Text style={styles.FoodDescription}>{props.description}</Text>
 
               </View>
 
@@ -93,7 +91,7 @@ export default function FoodScreen({route,navigation}) {
     },
     FoodTitle:{
         fontWeight:'bold',
-        fontSize:20,
+        fontSize:18,
         paddingLeft:'38%',
         paddingTop:'3%',
     },

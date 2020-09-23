@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View,ScrollView } from 'react-native';
-import { Container,Header,Left,Body,Right,Icon } from 'native-base';
+import { Container,Header,Left,Body,Right,Icon,Drawer } from 'native-base';
 
 import Head from './Components/Head.js';
 import HeadFood from './Components/HeadFood.js';
@@ -9,6 +9,7 @@ import MenuList from './Components/MenuList.js';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack'; 
 import FoodScreen from './screen/FoodScreen.js';
+import Carrello from './screen/Carrello.js';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 let Burger = require(`./assets/burger.jpg`);
@@ -17,26 +18,30 @@ let Pizza = require(`./assets/pizza.jpg`);
 let Pane = require(`./assets/pane.jpg`);
 
 function Home({route,navigation}) {
+  closeDrawer=()=>{drawer._root.close();}
+  openDrawer=()=>{drawer._root.open();}
   return (
-    <ScrollView style={styles.container}>
-    <Head/>
-    
+   
 
-    <TouchableOpacity onPress={()=> navigation.navigate('FoodScreen',{categoria:'Burger',image:{Burger}})}>
-        <MenuList categoria="Burger" image={Burger}/>
-    </TouchableOpacity>
-    <TouchableOpacity onPress={()=> navigation.navigate('FoodScreen',{categoria:'Pizza',image:{Burger}})}>
-        <MenuList categoria="Pizza" image={Pizza}/>
-    </TouchableOpacity>
-    <TouchableOpacity onPress={()=> navigation.navigate('FoodScreen',{categoria:'Pane',image:{Burger}})}> 
-        <MenuList categoria="Pane" image={Pane}/>
-    </TouchableOpacity>
-    <TouchableOpacity onPress={()=> navigation.navigate('FoodScreen',{categoria:'Bevanda',image:{Burger}})}> 
-        <MenuList categoria="Bevanda" image={Bevanda}/>
-    </TouchableOpacity>
-    <StatusBar style="light" backgroundColor="blue" />
+    <View style={styles.container}>
+    <ScrollView>
+    <Head navigation={navigation}/>
+    
+        <MenuList categoria="Burger" image={Burger} navigation={navigation}/>
+  
+    
+        <MenuList categoria="Pizza" image={Pizza} navigation={navigation}/>
+    
+     
+        <MenuList categoria="Pane" image={Pane} navigation={navigation}/>
+    
+    
+        <MenuList categoria="Bevanda" image={Bevanda} navigation={navigation}/>
+    
+    <StatusBar style="light" backgroundColor="blue" navigation={navigation}/>
     
     </ScrollView>
+    </View>
   );
 }
 
@@ -47,8 +52,8 @@ return (
 <NavigationContainer>
 <Stack.Navigator screenOptions={{headerShown: false,animationEnabled:false}} initialRouteName={'Home'}>
   <Stack.Screen name="Home" component={Home} />
-  <Stack.Screen name="HeadFood" component={HeadFood} />
   <Stack.Screen name="FoodScreen" component={FoodScreen} />
+  <Stack.Screen name="Carrello" component={Carrello} />
 </Stack.Navigator>
 </NavigationContainer>
 );

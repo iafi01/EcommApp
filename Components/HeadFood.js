@@ -6,17 +6,21 @@ import Home from '../App.js';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-export default function HeadFood({route,navigation}) { 
+export default function HeadFood(props) { 
     return (
 <Container style={styles.container}>
     <Header style={styles.header}>
       <Left>
-        <Button transparent onPress={()=> navigation.goBack()}>
+        <Button transparent onPress={()=> props.navigation.goBack()}>
       <Icon style={styles.iconleft} type="Ionicons" name="ios-arrow-back" />
       </Button>
       </Left>
-      <Body><Text style={styles.title}>Ecomm</Text></Body>
-      <Right><Icon style={styles.icons} type="FontAwesome" name="shopping-cart" style={styles.iconright}/></Right>
+      <Body><Text style={styles.title}>{props.categoria}</Text></Body>
+      <Right>
+      <Button transparent onPress={()=> props.navigation.navigate('Carrello',{categoria:props.categoria,image:props.image})}>
+        <Icon style={styles.icons} type="FontAwesome" name="shopping-cart" style={styles.iconright}/>
+        </Button>
+        </Right>
     </Header>
     </Container>
  );
@@ -43,7 +47,7 @@ const styles = StyleSheet.create({
     },
     title:{
       color:'white',
-      fontSize:20,
+      fontSize:18,
       marginLeft:90,
       
     }
