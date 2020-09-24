@@ -14,14 +14,19 @@ let Pizza = require(`../assets/pizza.jpg`);
 let Pane = require(`../assets/pane.jpg`);
 
 
-export default function FoodScreen(props) {
+export default function FoodItem(props) {
     return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={()=>props.navigation.navigate('ProductDetail',{
+        image:props.image,
+        title:props.title,
+        description:props.description,
+        prezzo:props.prezzo,
+    })}>
       <View style={styles.FoodItemView}>
 
           <View style={styles.PriceView}>
 
-                <Text style={styles.priceText}>€ 10.00</Text>
+                <Text style={styles.priceText}>€ {props.prezzo}</Text>
 
           </View>
 

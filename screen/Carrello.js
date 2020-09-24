@@ -6,13 +6,20 @@ import { Container,Header,Left,Body,Right,Icon,Drawer, ListItem,List,Content } f
 import Product from '../Components/Product.js';
 
 export default function Carrello({route,navigation}) {
-    const {categoria} = route.params;
     const {image} = route.params;
+    const {categoria} = route.params;
     return(
-        <View >
-            <Head navigation={navigation}/>
+        <View>
+            <Head carrello="Carrello" navigation={navigation}/>
             <View style={styles.container}>
-                <Content><Product name="Tagliatelle" categoria={categoria} image={image}/></Content>
+                <Content>
+                    <Product nome="Tagliatelle" prezzo='10,99' descrizione='Buona' image={image} categoria={categoria} />
+                    <Product nome="Tagliatelle" prezzo='10,99' descrizione='Buona' image={image} categoria={categoria} />
+                    <Product nome="Tagliatelle" prezzo='10,99' descrizione='Buona' image={image} categoria={categoria} />
+                    <Product nome="Tagliatelle" prezzo='10,99' descrizione='Buona' image={image} categoria={categoria} />
+                    <Product nome="Tagliatelle" prezzo='10,99' descrizione='Buona' image={image} categoria={categoria} />
+                
+                </Content>
             
             <View style={styles.footercontainer}>
                 <Text style={styles.total}>Totale:</Text>
@@ -31,7 +38,7 @@ const styles = StyleSheet.create({
     },
     footercontainer:{
         borderRadius:20,
-        height:300,
+        height:260,
         width:'100%',
         backgroundColor:'blue',
     },

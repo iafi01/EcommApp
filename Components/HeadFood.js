@@ -15,7 +15,7 @@ export default function HeadFood(props) {
       <Icon style={styles.iconleft} type="Ionicons" name="ios-arrow-back" />
       </Button>
       </Left>
-      <Body><Text style={styles.title}>{props.categoria}</Text></Body>
+    <Body><Text style={styles.title}>Ecomm {props.categoria}</Text></Body>
       <Right>
       <Button transparent onPress={()=> props.navigation.navigate('Carrello',{categoria:props.categoria,image:props.image})}>
         <Icon style={styles.icons} type="FontAwesome" name="shopping-cart" style={styles.iconright}/>
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     },
     title:{
       color:'white',
-      fontSize:18,
+      fontSize:13,
       marginLeft:90,
       
     }

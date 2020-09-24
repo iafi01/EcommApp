@@ -4,15 +4,14 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Container,Header,Left,Body,Right,Icon,Button } from 'native-base';
 
 
-export default function Head(props) {
-    
+export default function Head(props) {  
     return (
 <Container style={styles.container}>
     <Header style={styles.header}>
       <Left>
       <Icon style={styles.iconleft} type="Ionicons" name="menu" />
       </Left>
-      <Body><Text style={styles.title}>Ecomm</Text></Body>
+    <Body><Text style={styles.title}>Ecomm {props.carrello}</Text></Body>
       <Right>
       <Button transparent onPress={()=> props.navigation.navigate('Carrello',{categoria:props.categoria,image:props.image})}>
         <Icon style={styles.icons} type="FontAwesome" name="shopping-cart" style={styles.iconright}/>
@@ -44,7 +43,7 @@ const styles = StyleSheet.create({
     },
     title:{
       color:'white',
-      fontSize:18,
+      fontSize:14,
       marginLeft:90,
       
     }

@@ -10,12 +10,13 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 
 export default function FoodScreen({route,navigation}) {
-  const {categoria} = route.params;
   const {image} = route.params;
+  const {categoria} = route.params;
+  
     return (
     <ScrollView style={styles.container}>
-    <HeadFood categoria={categoria} navigation={navigation}/>
-    <FoodItem title="Panino caldo" description="Pane e pomodoro" image={image} navigation={navigation} />
+    <HeadFood categoria={categoria} image={image} navigation={navigation}/>
+    <FoodItem title="Panino caldo" description="Pane e pomodoro" prezzo='10,00' image={image} navigation={navigation} />
    <StatusBar style="light" backgroundColor="blue" />
   </ScrollView>
     
